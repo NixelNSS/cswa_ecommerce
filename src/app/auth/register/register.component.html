@@ -1,1 +1,37 @@
-<p>register works!</p>
+<section>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)" 
+          fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="3vh">
+        <mat-form-field hintLabel="Please, enter your name...">
+            <input 
+                matInput ngModel #name="ngModel"
+                type="text" placeholder="Name..." name="name" required minLength="8">
+            <mat-error *ngIf="name.hasError('required')">Field should not be empty!</mat-error>
+        </mat-form-field>
+
+        <mat-form-field hintLabel="Please enter your email...">
+            <input 
+                matInput ngModel #email="ngModel"
+                type="email" placeholder="Email..." name="email" required email>
+            <mat-error *ngIf="email.hasError('required')">Field should not be empty!</mat-error>    
+            <mat-error *ngIf="!email.hasError('required')">Please use the correct email format!</mat-error>    
+        </mat-form-field>
+
+        <mat-form-field hintLabel="Please, enter minimum 8 characters...">
+            <input 
+                matInput ngModel #password="ngModel"
+                type="password" placeholder="Password..." name="password" required minLength="8">
+            <mat-hint align="end">{{ password.value?.length }} / 8</mat-hint>
+            <mat-error *ngIf="password.hasError('required')">Field should not be empty!</mat-error> 
+        </mat-form-field>
+
+        <mat-form-field hintLabel="Please, confirm your password...">
+            <input 
+                matInput ngModel #confirmPassword="ngModel"
+                type="password" placeholder="Password..." name="confirmPassword" required minLength="8">
+            <mat-error *ngIf="confirmPassword.hasError('required')">Field should not be empty!</mat-error>
+            <mat-error *ngIf="">Password does not match!</mat-error>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button color="primary">Submit</button>
+    </form>
+</section>

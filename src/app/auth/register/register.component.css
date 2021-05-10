@@ -1,0 +1,10 @@
+form {
+    min-height: 100vh;
+}
+mat-form-field {
+    width: 30%;
+}
+button {
+    width: 10%;
+    margin-left: 20%;
+}
