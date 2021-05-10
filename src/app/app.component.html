@@ -1,1 +1,18 @@
+<nav fxLayout="row" fxLayoutAlign="start start">
+    <a href="/" id="cart">
+        <mat-icon>shopping_cart</mat-icon>
+    </a>
+    
+    <a *ngIf="false" href="/login" id="linkLogin">Log in</a>
+    <button *ngIf="true" mat-raised-button [matMenuTriggerFor]="menu" color="primary">
+        Hi, John Doe!
+        <mat-icon>expand_more</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item>Orders</button>
+        <button mat-menu-item>Profile</button>
+        <button mat-menu-item>Log out</button>
+    </mat-menu>
+
+</nav>
 <router-outlet></router-outlet>

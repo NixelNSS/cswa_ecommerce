@@ -13,12 +13,16 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { MaterialModule } from './material.module';
+import { ProfileComponent } from './auth/profile/profile.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProfileComponent,
+    HomeComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
