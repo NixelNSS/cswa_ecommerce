@@ -15,6 +15,10 @@ import { RegisterComponent } from './auth/register/register.component';
 import { MaterialModule } from './material.module';
 import { ProfileComponent } from './auth/profile/profile.component';
 import { HomeComponent } from './home/home.component';
+import { AuthService } from './auth/auth.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { UserService } from './auth/user/user.service';
+import { AuthGuardService } from './auth/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,8 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -35,7 +40,11 @@ import { HomeComponent } from './home/home.component';
     FlexLayoutModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    UserService,
+    AuthGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
