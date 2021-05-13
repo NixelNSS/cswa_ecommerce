@@ -8,3 +8,7 @@ button {
     width: 10%;
     margin-left: 20%;
 }
+a {
+    text-decoration: none;
+    color: #7f7f7f;
+}
