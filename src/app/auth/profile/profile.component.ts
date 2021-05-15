@@ -14,15 +14,4 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  changePassword(): void {
-    // const dialog = this.dialog.open(ChangePasswordComponent);
-    // dialog.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     console.log("Change");
-    //   } else {
-    //     console.log("Don't change password");
-    //   }
-    // });
-  }
-
 }
