@@ -19,6 +19,8 @@ import { AuthService } from './auth/auth.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UserService } from './auth/user/user.service';
 import { AuthGuardService } from './auth/auth-guard.service';
+import { PersonalInformationComponent } from './auth/profile/personal-information/personal-information.component';
+import { PasswordComponent } from './auth/profile/password/password.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { AuthGuardService } from './auth/auth-guard.service';
     RegisterComponent,
     ProfileComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    PersonalInformationComponent,
+    PasswordComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

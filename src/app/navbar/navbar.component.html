@@ -2,7 +2,7 @@
     <a *ngIf="this.authService.currentUser" id="cart" mat-raised-button color="primary">
         <mat-icon>shopping_cart</mat-icon>{{ 0 }}
     </a>
-    <button id="explore" *ngIf="!this.authService.currentUser" mat-raised-button routerLink="" color="primary">Explore</button>
+    <button id="explore" *ngIf="!this.authService.currentUser" mat-raised-button routerLink="" color="primary">Shop</button>
     
     <button *ngIf="!this.authService.currentUser" mat-raised-button routerLink="/login" color="primary">Log in</button>
     <button *ngIf="this.authService.currentUser" mat-raised-button [matMenuTriggerFor]="menu" color="primary">

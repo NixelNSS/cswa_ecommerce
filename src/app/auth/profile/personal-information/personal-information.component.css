@@ -4,10 +4,6 @@ mat-form-field {
 button {
     width: 8vw;
 }
-a {
-    text-decoration: none;
-    color: #7f7f7f;
-}
 section {
     height: 90vh;
 }
@@ -17,5 +13,5 @@ mat-card {
     text-align: center;
 }
 mat-card-content {
-    width: 100%;
+    width: 75%;
 }

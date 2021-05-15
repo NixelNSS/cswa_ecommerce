@@ -3,7 +3,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
     imports: [
@@ -11,14 +14,20 @@ import {MatMenuModule} from '@angular/material/menu';
         MatFormFieldModule,
         MatButtonModule,
         MatInputModule,
-        MatMenuModule
+        MatMenuModule,
+        MatCardModule,
+        MatDialogModule,
+        MatTabsModule
     ],
     exports: [
         MatIconModule,
         MatFormFieldModule,
         MatButtonModule,
         MatInputModule,
-        MatMenuModule
+        MatMenuModule,
+        MatCardModule,
+        MatDialogModule,
+        MatTabsModule
     ]
 })
 export class MaterialModule {
