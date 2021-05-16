@@ -37,6 +37,12 @@
                     <mat-error *ngIf="address.hasError('required')">Field should not be empty!</mat-error>
                 </mat-form-field>
 
+                <mat-form-field hintLabel="Please, enter your favorite categories...">
+                    <input matInput ngModel #favoriteCategories="ngModel" type="text"
+                        placeholder="Favorite categories..." name="favoriteCategories" required minLength="8">
+                    <mat-error *ngIf="favoriteCategories.hasError('required')">Field should not be empty!</mat-error>
+                </mat-form-field>
+
                 <mat-form-field hintLabel="Please, enter minimum 8 characters...">
                     <input matInput ngModel #password="ngModel" type="password" placeholder="Password..."
                         name="password" required minLength="8">
@@ -50,6 +56,7 @@
                     <mat-error *ngIf="confirmPassword.hasError('required')">Field should not be empty!</mat-error>
                     <mat-error *ngIf="">Password does not match!</mat-error>
                 </mat-form-field>
+                <mat-error id="custom-error">{{ error }}</mat-error>
             </mat-card-content>
             <mat-card-actions>
                 <button type="submit" mat-raised-button color="primary">Register</button>

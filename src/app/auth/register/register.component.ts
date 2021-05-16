@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register',
@@ -8,13 +10,28 @@ import { NgForm } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  error: string;
+
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(form: NgForm): void {
-    console.log(form);
+    if (form.value.password === form.value.confirmPassword) {
+      if (!this.authService.register(
+        form.value.email, form.value.password, form.value.firstName,
+        form.value.lastName, form.value.phone,
+        form.value.address, form.value.favoriteCategories
+      )) {
+        this.error = "User with provided email already exists.";
+      } else {
+        this.router.navigate(['']);
+      }
+    } else {
+      this.error = "Passwords don't match!";
+    }
+
   }
 
 }

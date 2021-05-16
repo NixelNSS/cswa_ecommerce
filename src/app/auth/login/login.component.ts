@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -9,14 +10,19 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  error: string;
+
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  login(form: NgForm): void {
-    console.log(form);
-    this.authService.login();
+  onSubmit(form: NgForm): void {
+    if (!this.authService.login(form.value.email, form.value.password)) {
+      this.error = "Email and password doesn't match!";
+    } else {
+      this.router.navigate(['']);
+    }
   }
 
 }

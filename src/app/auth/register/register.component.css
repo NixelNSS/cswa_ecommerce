@@ -19,3 +19,6 @@ mat-card {
 mat-card-content {
     width: 100%;
 }
+#custom-error {
+    margin-top: 2vh;
+}

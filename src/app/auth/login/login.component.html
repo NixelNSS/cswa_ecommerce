@@ -1,6 +1,6 @@
 <section fxLayoutAlign="center center">
     <mat-card>
-        <form #form="ngForm" (ngSubmit)="login(form)" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="3vh">
+        <form #form="ngForm" (ngSubmit)="onSubmit(form)" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="3vh">
             <mat-card-header fxLayoutAlign="center center">
                 <mat-card-title>Login form</mat-card-title>
             </mat-card-header>
@@ -17,6 +17,7 @@
                         name="password" required minLength="8">
                     <mat-error *ngIf="password.hasError('required')">Field should not be empty!</mat-error>
                 </mat-form-field>
+                <mat-error id="custom-error">{{ error }}</mat-error>
             </mat-card-content>
             <mat-card-actions>
                 <button type="submit" mat-raised-button color="primary">Log in</button>

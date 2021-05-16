@@ -10,20 +10,38 @@ export class AuthService {
 
   currentUser: User = UserService.users[0];
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router) { }
 
-  login() { }
+  login(email: string, password: string): boolean {
+    let user: User = this.getUserByEmailAndPassword(email, password);
+    if (user) {
+      this.currentUser = user;
+      return true;
+    }
+    return false;
+  }
 
-  logout():void {
+  logout(): void {
     this.currentUser = null;
     this.router.navigate(['/login']);
   }
 
-  register() { }
+  getUserByEmailAndPassword(email: string, password: string): User {
+    return UserService.users.find(user => (
+      user.email == email &&
+      user.password == password));
+  }
 
-  checkIfUserWithProvidedEmailAlreadyExists() { }
+  register(email: string, password: string, firstName: string, lastName: string, phone: string, address: string, favoriteCategories: string): boolean {
+    let user: User = this.userService.create(email, password, firstName, lastName, phone, address, favoriteCategories);
+    if (user) {
+      this.currentUser = user;
+      return true;
+    }
+    return false;
+  }
 
-  getCurrentUserDisplayName(): string { 
+  getCurrentUserDisplayName(): string {
     return this.userService.getFullName(this.currentUser);
   }
 }

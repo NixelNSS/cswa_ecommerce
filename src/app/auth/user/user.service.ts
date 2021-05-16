@@ -9,44 +9,59 @@ export class UserService {
   public static users: User[] = [
     {
       id: 1,
-      email: "test@test.com",
-      password: "test123",
-      firstName: "Jack",
-      lastName: "Wolf",
-      phone: "+3816711223344",
-      address: "Test Adresa 1",
+      email: "nikola@nikola.com",
+      password: "nikola12",
+      firstName: "Nikola",
+      lastName: "Kostic",
+      phone: "+381652332222",
+      address: "Bul. Kralja Aleksandra 2",
       favoriteCategories: "A"
     },
     {
       id: 2,
       email: "try@try.com",
-      password: "try123",
-      firstName: "Test",
-      lastName: "Test",
-      phone: "+3816711223344",
-      address: "Test Adresa 1",
+      password: "try12345",
+      firstName: "Try",
+      lastName: "Try",
+      phone: "+38163456753",
+      address: "Bul. Kralja Aleksandra 2",
       favoriteCategories: "A"
     },
     {
       id: 3,
-      email: "ge@ge.com",
-      password: "ge123",
-      firstName: "Test",
-      lastName: "Test",
-      phone: "+3816711223344",
-      address: "Test Adresa 1",
+      email: "gerge@gerge.com",
+      password: "gerge123",
+      firstName: "Gerge",
+      lastName: "Gerge",
+      phone: "+38160874322566",
+      address: "Bul. Kralja Aleksandra 2",
       favoriteCategories: "A"
     }
   ];
-  private static idCount = 3;
+  private static idCount = 4;
 
   constructor() {
-    
+
   }
 
-  create(user: User): void {
-    UserService.idCount++;
-    UserService.users.push(user);
+  create(email: string, password: string, firstName: string, lastName: string, phone: string, address: string, favoriteCategories: string): User {
+    if (!this.doesUserWithProvidedEmailAlreadyExists(email)) {
+      let user: User = {
+        id: UserService.idCount,
+        email: email,
+        password: password,
+        firstName: firstName,
+        lastName: lastName,
+        phone: phone,
+        address: address,
+        favoriteCategories: favoriteCategories
+      }
+      console.log(user);
+      UserService.idCount++;
+      UserService.users.push(user);
+      return user;
+    }
+    return null;
   }
 
   update(user: User): void {
@@ -59,5 +74,10 @@ export class UserService {
 
   getFullName(user: User): string {
     return user.firstName + ' ' + user.lastName;
+  }
+
+  doesUserWithProvidedEmailAlreadyExists(email: string): boolean {
+    if (UserService.users.find(user => (user.email == email))) return true;
+    return false;
   }
 }
