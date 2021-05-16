@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
   error: string;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private toastService: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -26,6 +27,7 @@ export class RegisterComponent implements OnInit {
       )) {
         this.error = "User with provided email already exists.";
       } else {
+        this.toastService.success("Registration successful");
         this.router.navigate(['']);
       }
     } else {

@@ -22,6 +22,7 @@ import { AuthGuardService } from './auth/auth-guard.service';
 import { PersonalInformationComponent } from './auth/profile/personal-information/personal-information.component';
 import { PasswordComponent } from './auth/profile/password/password.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     NavbarComponent,
     PersonalInformationComponent,
     PasswordComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -44,7 +45,13 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
     MaterialModule,
     FormsModule,
     FlexLayoutModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(
+      {  
+        positionClass: 'toast-bottom-right',  
+        closeButton: true,
+      } 
+    )
   ],
   providers: [
     AuthService,

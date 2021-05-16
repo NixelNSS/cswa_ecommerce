@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../../user/user.service';
 import { AuthService } from '../../auth.service';
 import { User } from '../../user/user.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'personal-information',
@@ -16,7 +17,9 @@ export class PersonalInformationComponent implements OnInit {
   isNotEditable: boolean = true;
   currentUser: User = Object.create(this.authService.currentUser);
 
-  constructor(private authService: AuthService, private userService: UserService, private dialog: MatDialog) {}
+  constructor(
+    private authService: AuthService, private userService: UserService, 
+    private dialog: MatDialog, private toastService: ToastrService) {}
 
   ngOnInit(): void {}
 
@@ -43,7 +46,7 @@ export class PersonalInformationComponent implements OnInit {
         );
         this.changeEditState();
         this.currentUser = Object.create(this.authService.currentUser);
-        console.log(this.currentUser);
+        this.toastService.success("Personal information updated successfully!");
       }
     });
   }

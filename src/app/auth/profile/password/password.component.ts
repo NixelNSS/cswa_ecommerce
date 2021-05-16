@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ConfirmationDialogComponent } from 'src/app/confirmation-dialog/confirmation-dialog.component';
 import { AuthService } from '../../auth.service';
 import { User } from '../../user/user.model';
@@ -15,7 +17,10 @@ export class PasswordComponent implements OnInit {
 
   error: string;
 
-  constructor(private authService: AuthService, private userService: UserService, private dialog: MatDialog) { }
+  constructor(
+    private authService: AuthService, private userService: UserService, 
+    private dialog: MatDialog, private toastService: ToastrService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -33,6 +38,8 @@ export class PasswordComponent implements OnInit {
           let currentUser: User = this.authService.currentUser;
           if (currentUser.password === form.value.oldPassword) {
             this.userService.changePassword(currentUser.id, form.value.password);
+            this.toastService.success("Password changed successfully!");
+            this.router.navigate(['']);
           } else {
             this.error = "Old password doesn't match!";
           }
