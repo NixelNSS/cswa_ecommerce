@@ -64,8 +64,26 @@ export class UserService {
     return null;
   }
 
-  update(user: User): void {
+  update(id: number, firstName: string, lastName: string, phone: string, address: string, favoriteCategories: string): void {
+    let user: User = this.getUserById(id);
+    let index = UserService.users.indexOf(user);
+    user.firstName = firstName;
+    user.lastName = lastName;
+    user.phone = phone;
+    user.address = address;
+    user.favoriteCategories = favoriteCategories;
+    UserService.users[index] = user;
+  }
 
+  changePassword(id: number, password: string): void {
+    let user: User = this.getUserById(id);
+    let index = UserService.users.indexOf(user);
+    user.password = password;
+    UserService.users[index] = user;
+  }
+
+  getUserById(id: number): User {
+    return UserService.users.find(user => user.id === id);
   }
 
   getUserByEmail(email: string): User {

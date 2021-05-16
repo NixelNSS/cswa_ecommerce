@@ -2,6 +2,9 @@ import { ConfirmationDialogComponent } from './../../../confirmation-dialog/conf
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { UserService } from '../../user/user.service';
+import { AuthService } from '../../auth.service';
+import { User } from '../../user/user.model';
 
 @Component({
   selector: 'personal-information',
@@ -10,16 +13,15 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class PersonalInformationComponent implements OnInit {
 
-  isEditable: boolean = true;
-  v = "Nikola";
+  isNotEditable: boolean = true;
+  currentUser: User = Object.create(this.authService.currentUser);
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private authService: AuthService, private userService: UserService, private dialog: MatDialog) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  edit(form: NgForm): void {
-    this.isEditable = !this.isEditable;
+  changeEditState(): void {
+    this.isNotEditable = !this.isNotEditable;
   }
 
   onSubmit(form: NgForm): void {
@@ -31,11 +33,18 @@ export class PersonalInformationComponent implements OnInit {
     });
     dialog.afterClosed().subscribe(result => {
       if (result) {
-        console.log(result);
-      } else {
-        console.log(result)
+        this.userService.update(
+          this.currentUser.id,
+          form.value.firstName,
+          form.value.lastName,
+          form.value.phone,
+          form.value.address,
+          form.value.favoriteCategories
+        );
+        this.changeEditState();
+        this.currentUser = Object.create(this.authService.currentUser);
+        console.log(this.currentUser);
       }
-
     });
   }
 
