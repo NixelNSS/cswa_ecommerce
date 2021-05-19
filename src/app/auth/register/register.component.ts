@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../auth.service';
@@ -12,6 +12,8 @@ import { AuthService } from '../auth.service';
 export class RegisterComponent implements OnInit {
 
   error: string;
+  categories = new FormControl();
+  categoryList: string[] = ["Java", "Python", "C#", "JS", "Go"];
 
   constructor(private authService: AuthService, private router: Router, private toastService: ToastrService) { }
 
@@ -19,11 +21,11 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(form: NgForm): void {
-    if (form.value.password === form.value.confirmPassword) {
+    if (form.valid && form.value.password === form.value.confirmPassword) {
       if (!this.authService.register(
         form.value.email, form.value.password, form.value.firstName,
         form.value.lastName, form.value.phone,
-        form.value.address, form.value.favoriteCategories
+        form.value.address, this.categories.value
       )) {
         this.error = "User with provided email already exists.";
       } else {

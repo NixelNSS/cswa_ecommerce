@@ -37,11 +37,19 @@
                     <mat-error *ngIf="address.hasError('required')">Field should not be empty!</mat-error>
                 </mat-form-field>
 
-                <mat-form-field hintLabel="Please, enter your favorite categories...">
+                <!-- <mat-form-field hintLabel="Please, enter your favorite categories...">
                     <input matInput ngModel #favoriteCategories="ngModel" type="text"
                         placeholder="Favorite categories..." name="favoriteCategories" required minLength="8">
                     <mat-error *ngIf="favoriteCategories.hasError('required')">Field should not be empty!</mat-error>
+                </mat-form-field> -->
+
+                <mat-form-field hintLabel="Please, enter your favorite categories...">
+                    <mat-label>Favorite categories</mat-label>
+                    <mat-select [formControl]="categories" multiple placeholder="Favorite categories...">
+                        <mat-option *ngFor="let category of categoryList" [value]="category">{{ category }}</mat-option>
+                    </mat-select>
                 </mat-form-field>
+
 
                 <mat-form-field hintLabel="Please, enter minimum 8 characters...">
                     <input matInput ngModel #password="ngModel" type="password" placeholder="Password..."
@@ -59,7 +67,7 @@
                 <mat-error id="custom-error">{{ error }}</mat-error>
             </mat-card-content>
             <mat-card-actions>
-                <button type="submit" mat-raised-button color="primary">Register</button>
+                <button [disabled]="!form.valid" type="submit" mat-raised-button color="primary">Register</button>
             </mat-card-actions>
         </form>
         <a routerLink="/login">Already have an account? Click here to login!</a>

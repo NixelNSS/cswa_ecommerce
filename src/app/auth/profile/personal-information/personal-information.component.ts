@@ -28,27 +28,28 @@ export class PersonalInformationComponent implements OnInit {
   }
 
   onSubmit(form: NgForm): void {
-    console.log("Change personal information");
-    const dialog = this.dialog.open(ConfirmationDialogComponent, {
-      data: {
-        content: "change your personal information"
-      }
-    });
-    dialog.afterClosed().subscribe(result => {
-      if (result) {
-        this.userService.update(
-          this.currentUser.id,
-          form.value.firstName,
-          form.value.lastName,
-          form.value.phone,
-          form.value.address,
-          form.value.favoriteCategories
-        );
-        this.changeEditState();
-        this.currentUser = Object.create(this.authService.currentUser);
-        this.toastService.success("Personal information updated successfully!");
-      }
-    });
+    if (form.valid) {
+      const dialog = this.dialog.open(ConfirmationDialogComponent, {
+        data: {
+          content: "change your personal information"
+        }
+      });
+      dialog.afterClosed().subscribe(result => {
+        if (result) {
+          this.userService.update(
+            this.currentUser.id,
+            form.value.firstName,
+            form.value.lastName,
+            form.value.phone,
+            form.value.address,
+            form.value.favoriteCategories
+          );
+          this.changeEditState();
+          this.currentUser = Object.create(this.authService.currentUser);
+          this.toastService.success("Personal information updated successfully!");
+        }
+      });
+    }
   }
 
 }

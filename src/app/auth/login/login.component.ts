@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form: NgForm): void {
-    if (!this.authService.login(form.value.email, form.value.password)) {
+    if (form.valid && !this.authService.login(form.value.email, form.value.password)) {
       this.error = "Email and password doesn't match!";
     } else {
       this.toastService.success("Login successful");

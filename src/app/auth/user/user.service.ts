@@ -56,7 +56,6 @@ export class UserService {
         address: address,
         favoriteCategories: favoriteCategories
       }
-      console.log(user);
       UserService.idCount++;
       UserService.users.push(user);
       return user;

@@ -20,7 +20,7 @@
                 <mat-error id="custom-error">{{ error }}</mat-error>
             </mat-card-content>
             <mat-card-actions>
-                <button type="submit" mat-raised-button color="primary">Log in</button>
+                <button [disabled]="!form.valid" type="submit" mat-raised-button color="primary">Log in</button>
             </mat-card-actions>
         </form>
         <a routerLink="/register">Don't have an account? Click here to register!</a>
