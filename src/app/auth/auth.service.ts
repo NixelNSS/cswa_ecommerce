@@ -32,7 +32,7 @@ export class AuthService {
       user.password == password));
   }
 
-  register(email: string, password: string, firstName: string, lastName: string, phone: string, address: string, favoriteCategories: string): boolean {
+  register(email: string, password: string, firstName: string, lastName: string, phone: string, address: string, favoriteCategories: string[]): boolean {
     let user: User = this.userService.create(email, password, firstName, lastName, phone, address, favoriteCategories);
     if (user) {
       this.currentUser = user;

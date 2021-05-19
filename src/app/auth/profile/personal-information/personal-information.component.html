@@ -10,14 +10,14 @@
       <mat-card-content>
 
         <mat-form-field>
-          <input matInput [ngModel]="this.currentUser.firstName" #firstName="ngModel" type="text" placeholder="First name..."
-            name="firstName" required minLength="3" [disabled]="isNotEditable">
+          <input matInput [ngModel]="this.currentUser.firstName" #firstName="ngModel" type="text"
+            placeholder="First name..." name="firstName" required minLength="3" [disabled]="isNotEditable">
           <mat-error *ngIf="firstName.hasError('required')">Field should not be empty!</mat-error>
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput [(ngModel)]="this.currentUser.lastName" ngModel #lastName="ngModel" type="text" placeholder="Last name..."
-            name="lastName" required minLength="3" [disabled]="isNotEditable">
+          <input matInput [(ngModel)]="this.currentUser.lastName" ngModel #lastName="ngModel" type="text"
+            placeholder="Last name..." name="lastName" required minLength="3" [disabled]="isNotEditable">
           <mat-error *ngIf="lastName.hasError('required')">Field should not be empty!</mat-error>
         </mat-form-field>
 
@@ -26,26 +26,27 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput [(ngModel)]="this.currentUser.phone" ngModel #phone="ngModel" type="tel" placeholder="Phone number..." name="phone"
-            required minLength="8" [disabled]="isNotEditable">
+          <input matInput [(ngModel)]="this.currentUser.phone" ngModel #phone="ngModel" type="tel"
+            placeholder="Phone number..." name="phone" required minLength="8" [disabled]="isNotEditable">
           <mat-error *ngIf="phone.hasError('required')">Field should not be empty!</mat-error>
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput [(ngModel)]="this.currentUser.address" ngModel #address="ngModel" type="text" placeholder="Address..." name="address"
-            required minLength="8" [disabled]="isNotEditable">
+          <input matInput [(ngModel)]="this.currentUser.address" ngModel #address="ngModel" type="text"
+            placeholder="Address..." name="address" required minLength="8" [disabled]="isNotEditable">
           <mat-error *ngIf="address.hasError('required')">Field should not be empty!</mat-error>
         </mat-form-field>
 
         <mat-form-field hintLabel="Please, enter your favorite categories...">
-          <input matInput [(ngModel)]="this.currentUser.favoriteCategories" ngModel #favoriteCategories="ngModel" type="text" placeholder="Favorite categories..." name="favoriteCategories"
-              required minLength="8" [disabled]="isNotEditable">
-          <mat-error *ngIf="favoriteCategories.hasError('required')">Field should not be empty!</mat-error>
-      </mat-form-field>
+          <mat-select [formControl]="categories" multiple placeholder="Favorite categories...">
+            <mat-option *ngFor="let category of categoryList" [value]="category">{{ category }}</mat-option>
+          </mat-select>
+        </mat-form-field>
 
         <mat-card-actions>
           <button *ngIf="isNotEditable" mat-raised-button color="primary" (click)="changeEditState()">EDIT</button>
-          <button [disabled]="!form.valid" *ngIf="!isNotEditable" mat-raised-button color="primary" type="submit">SAVE</button>
+          <button [disabled]="!form.valid" *ngIf="!isNotEditable" mat-raised-button color="primary"
+            type="submit">SAVE</button>
         </mat-card-actions>
       </mat-card-content>
     </form>

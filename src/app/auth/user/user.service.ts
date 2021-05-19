@@ -15,7 +15,7 @@ export class UserService {
       lastName: "Kostic",
       phone: "+381652332222",
       address: "Bul. Kralja Aleksandra 2",
-      favoriteCategories: "A"
+      favoriteCategories: ["Java", "Python", "JS"]
     },
     {
       id: 2,
@@ -25,7 +25,7 @@ export class UserService {
       lastName: "Try",
       phone: "+38163456753",
       address: "Bul. Kralja Aleksandra 2",
-      favoriteCategories: "A"
+      favoriteCategories: ["Java", "Python", "JS"]
     },
     {
       id: 3,
@@ -35,7 +35,7 @@ export class UserService {
       lastName: "Gerge",
       phone: "+38160874322566",
       address: "Bul. Kralja Aleksandra 2",
-      favoriteCategories: "A"
+      favoriteCategories: ["Java", "Python", "JS"]
     }
   ];
   private static idCount = 4;
@@ -44,7 +44,7 @@ export class UserService {
 
   }
 
-  create(email: string, password: string, firstName: string, lastName: string, phone: string, address: string, favoriteCategories: string): User {
+  create(email: string, password: string, firstName: string, lastName: string, phone: string, address: string, favoriteCategories: string[]): User {
     if (!this.doesUserWithProvidedEmailAlreadyExists(email)) {
       let user: User = {
         id: UserService.idCount,
@@ -63,7 +63,7 @@ export class UserService {
     return null;
   }
 
-  update(id: number, firstName: string, lastName: string, phone: string, address: string, favoriteCategories: string): void {
+  update(id: number, firstName: string, lastName: string, phone: string, address: string, favoriteCategories: string[]): void {
     let user: User = this.getUserById(id);
     let index = UserService.users.indexOf(user);
     user.firstName = firstName;

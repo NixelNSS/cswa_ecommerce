@@ -6,5 +6,5 @@ export interface User {
     lastName: string;
     phone: string;
     address: string;
-    favoriteCategories: string;
+    favoriteCategories: string[];
 }

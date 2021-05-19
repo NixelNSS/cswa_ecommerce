@@ -1,6 +1,6 @@
 import { ConfirmationDialogComponent } from './../../../confirmation-dialog/confirmation-dialog.component';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { UserService } from '../../user/user.service';
 import { AuthService } from '../../auth.service';
@@ -16,15 +16,18 @@ export class PersonalInformationComponent implements OnInit {
 
   isNotEditable: boolean = true;
   currentUser: User = Object.create(this.authService.currentUser);
+  categories = new FormControl({ value: this.currentUser.favoriteCategories, disabled: true });
+  categoryList: string[] = ["Java", "Python", "C#", "JS", "Go"];
 
   constructor(
-    private authService: AuthService, private userService: UserService, 
-    private dialog: MatDialog, private toastService: ToastrService) {}
+    private authService: AuthService, private userService: UserService,
+    private dialog: MatDialog, private toastService: ToastrService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   changeEditState(): void {
     this.isNotEditable = !this.isNotEditable;
+    this.isNotEditable ? this.categories.disable() : this.categories.enable();
   }
 
   onSubmit(form: NgForm): void {
@@ -42,7 +45,7 @@ export class PersonalInformationComponent implements OnInit {
             form.value.lastName,
             form.value.phone,
             form.value.address,
-            form.value.favoriteCategories
+            this.categories.value
           );
           this.changeEditState();
           this.currentUser = Object.create(this.authService.currentUser);
