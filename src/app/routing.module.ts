@@ -6,6 +6,7 @@ import { ProfileComponent } from './auth/profile/profile.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './home/home.component';
 import { OrdersComponent } from './orders/orders.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
     path: 'orders',
     component: OrdersComponent,
     canActivate: [AuthGuardService]
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
   }
 ];
 

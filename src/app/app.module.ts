@@ -23,6 +23,7 @@ import { PersonalInformationComponent } from './auth/profile/personal-informatio
 import { PasswordComponent } from './auth/profile/password/password.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { ToastrModule } from 'ngx-toastr';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ToastrModule } from 'ngx-toastr';
     PersonalInformationComponent,
     PasswordComponent,
     ConfirmationDialogComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
