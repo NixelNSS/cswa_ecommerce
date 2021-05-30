@@ -22,20 +22,20 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(form: NgForm): void {
     if (form.valid && form.value.password === form.value.confirmPassword) {
-      if (!this.authService.register(
-        form.value.email, form.value.password, form.value.firstName,
-        form.value.lastName, form.value.phone,
-        form.value.address, this.categories.value
-      )) {
-        this.error = "User with provided email already exists.";
-      } else {
-        this.toastService.success("Registration successful");
-        this.router.navigate(['']);
-      }
+      this.authService.register(
+        form.value.email, form.value.password, form.value.confirmPassword,
+        form.value.firstName, form.value.lastName, form.value.phone,
+        form.value.address, this.categories.value).subscribe(
+          response => {
+            this.authService.currentUser = response;
+            this.toastService.success("Registration successful");
+            this.router.navigate(['']);
+          },
+          () => this.error = "User with provided email already exists."
+        );
     } else {
       this.error = "Passwords don't match!";
     }
-
   }
 
 }

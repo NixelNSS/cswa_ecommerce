@@ -19,11 +19,15 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form: NgForm): void {
-    if (form.valid && !this.authService.login(form.value.email, form.value.password)) {
-      this.error = "Email and password doesn't match!";
-    } else {
-      this.toastService.success("Login successful");
-      this.router.navigate(['']);
+    if (form.valid) {
+      this.authService.login(form.value.email, form.value.password).subscribe(
+        response => {
+          this.authService.updateCurrentUserAfterLogin(response);
+          this.toastService.success("Login successful");
+          this.router.navigate(['']);
+        },
+        () => this.error = "Email and password don't match!"
+      );
     }
   }
 

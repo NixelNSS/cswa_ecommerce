@@ -20,6 +20,9 @@ import { PasswordComponent } from './auth/profile/password/password.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { ToastrModule } from 'ngx-toastr';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenStorageService } from './auth/token-storage.service';
+import { AuthInterceptorService } from './auth/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FlexLayoutModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     ToastrModule.forRoot(
       {  
         positionClass: 'toast-bottom-right',  
@@ -52,7 +56,13 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   providers: [
     AuthService,
     UserService,
-    AuthGuardService
+    AuthGuardService,
+    TokenStorageService,
+    { 
+      provide: HTTP_INTERCEPTORS, 
+      useClass: AuthInterceptorService, 
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

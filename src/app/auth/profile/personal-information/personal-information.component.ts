@@ -40,16 +40,19 @@ export class PersonalInformationComponent implements OnInit {
       dialog.afterClosed().subscribe(result => {
         if (result) {
           this.userService.update(
-            this.currentUser.id,
             form.value.firstName,
             form.value.lastName,
             form.value.phone,
             form.value.address,
             this.categories.value
+          ).subscribe(
+            response => {
+              this.changeEditState();
+              this.authService.updateCurrentUserAfterPersonalInformationUpdate(response);
+              this.currentUser = Object.create(this.authService.currentUser);
+              this.toastService.success("Personal information updated successfully!");
+            }
           );
-          this.changeEditState();
-          this.currentUser = Object.create(this.authService.currentUser);
-          this.toastService.success("Personal information updated successfully!");
         }
       });
     }
