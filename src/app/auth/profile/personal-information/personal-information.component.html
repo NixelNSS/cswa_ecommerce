@@ -38,7 +38,7 @@
         </mat-form-field>
 
         <mat-form-field hintLabel="Please, enter your favorite categories...">
-          <mat-select [formControl]="categories" multiple placeholder="Favorite categories...">
+          <mat-select [formControl]="categoriesForm" multiple placeholder="Favorite categories...">
             <mat-option *ngFor="let category of categoryList" [value]="category">{{ category }}</mat-option>
           </mat-select>
         </mat-form-field>

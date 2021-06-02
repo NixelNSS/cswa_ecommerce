@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
+import { Category } from '../category/category.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +27,8 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-  register(email: string, password: string, confirmPassword: string, firstName: string, lastName: string, phone: string, address: string, favoriteCategories: string[]): Observable<User> {
-    const data = { "email": email, "password": password, "confirmPassword": confirmPassword, "firstName": firstName, "lastName": lastName, "phone": phone, "address": address };
+  register(email: string, password: string, confirmPassword: string, firstName: string, lastName: string, phone: string, address: string, favoriteCategories: Category[]): Observable<User> {
+    const data = { "email": email, "password": password, "confirmPassword": confirmPassword, "firstName": firstName, "lastName": lastName, "phone": phone, "address": address, "favoriteCategories": favoriteCategories };
     return this.http.post<User>(environment.apiUrl + "auth/register", data);
   }
 
@@ -54,6 +55,7 @@ export class AuthService {
 
   updateCurrentUserAfterLogin(response: any): void {
     this.tokenStorageService.saveToken(response.token);
+    console.log(response);
     let user: User = {
       id: response.id,
       email: response.email,
@@ -62,7 +64,7 @@ export class AuthService {
       lastName: response.lastName,
       phone: response.phone,
       address: response.address,
-      favoriteCategories: []
+      favoriteCategories: response.favoriteCategories
     };
     this.tokenStorageService.saveUser(user);
     this.currentUser = this.tokenStorageService.getUser();

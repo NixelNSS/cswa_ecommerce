@@ -1,3 +1,5 @@
+import { Category } from "src/app/category/category.model";
+
 export interface User {
     id: number;
     email: string;
@@ -6,5 +8,5 @@ export interface User {
     lastName: string;
     phone: string;
     address: string;
-    favoriteCategories: string[];
+    favoriteCategories: Category[];
 }

@@ -6,6 +6,8 @@ import { UserService } from '../../user/user.service';
 import { AuthService } from '../../auth.service';
 import { User } from '../../user/user.model';
 import { ToastrService } from 'ngx-toastr';
+import { CategoryService } from 'src/app/category/category.service';
+import { Category } from 'src/app/category/category.model';
 
 @Component({
   selector: 'personal-information',
@@ -16,18 +18,38 @@ export class PersonalInformationComponent implements OnInit {
 
   isNotEditable: boolean = true;
   currentUser: User = Object.create(this.authService.currentUser);
-  categories = new FormControl({ value: this.currentUser.favoriteCategories, disabled: true });
-  categoryList: string[] = ["Java", "Python", "C#", "JS", "Go"];
+  categoriesForm = new FormControl({ value: this.findFavoriteCategories(), disabled: true });
+  categoryList: string[];
+  categoryObjects: Category[];
 
   constructor(
     private authService: AuthService, private userService: UserService,
-    private dialog: MatDialog, private toastService: ToastrService) { }
+    private dialog: MatDialog, private toastService: ToastrService,
+    private categoryService: CategoryService) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.categoryService.getAll().subscribe(response => {
+      this.categoryObjects = response;
+      this.categoryList = this.categoryObjects.map(category => category.name);
+    });
+  }
+
+  findFavoriteCategories(): string[] {
+    return this.currentUser.favoriteCategories.map(category => category.name);
+  }
+
+  findCategoryObjects(categoryStrings: string[]): Category[] {
+    let array: Category[] = [];
+    categoryStrings.forEach(string => {
+      let object = this.categoryObjects.find(category => category.name === string);
+      if (object) array.push(object);
+    });
+    return array;
+  }
 
   changeEditState(): void {
     this.isNotEditable = !this.isNotEditable;
-    this.isNotEditable ? this.categories.disable() : this.categories.enable();
+    this.isNotEditable ? this.categoriesForm.disable() : this.categoriesForm.enable();
   }
 
   onSubmit(form: NgForm): void {
@@ -44,7 +66,7 @@ export class PersonalInformationComponent implements OnInit {
             form.value.lastName,
             form.value.phone,
             form.value.address,
-            this.categories.value
+            this.findCategoryObjects(this.categoriesForm.value)
           ).subscribe(
             response => {
               this.changeEditState();

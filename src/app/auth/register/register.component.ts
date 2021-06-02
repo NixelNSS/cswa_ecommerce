@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Category } from 'src/app/category/category.model';
+import { CategoryService } from 'src/app/category/category.service';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -13,11 +15,16 @@ export class RegisterComponent implements OnInit {
 
   error: string;
   categories = new FormControl();
-  categoryList: string[] = ["Java", "Python", "C#", "JS", "Go"];
+  categoryList: Category[];
 
-  constructor(private authService: AuthService, private router: Router, private toastService: ToastrService) { }
+  constructor(
+    private authService: AuthService, 
+    private router: Router, 
+    private toastService: ToastrService,
+    private categoryService: CategoryService) { }
 
   ngOnInit(): void {
+    this.categoryService.getAll().subscribe(response => this.categoryList = response);
   }
 
   onSubmit(form: NgForm): void {
