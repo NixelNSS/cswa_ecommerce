@@ -1,0 +1,11 @@
+section {
+    margin-top: 10vh;
+}
+mat-card {
+    width: 20%;
+    margin: auto;
+    min-height: 33vh;
+}
+mat-card-content {
+    width: 75%;
+}

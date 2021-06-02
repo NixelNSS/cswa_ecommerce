@@ -1,0 +1,28 @@
+<section fxLayoutAlign="center center" fxLayout="column">
+    <mat-card>
+        <mat-card-header fxLayoutAlign="center center">
+            <mat-card-title>{{ product.name }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <img src="https://www.w3schools.com/images/w3schools_green.jpg">
+            <p>Description: {{ product.description }}</p>
+            <p>Quantity: {{ product.quantity }}</p>
+            <p>Price: {{ product.price }}</p>
+            <p>Seller: {{ product.seller }}</p>
+            <p>Country of origin: {{ product.countryOfOrigin }}</p>
+            <p>Subcategory: {{ product.subcategory.name }}</p>
+        </mat-card-content>
+        <mat-card-actions fxLayoutAlign="space-between center">
+            <a mat-raised-button color="primary">
+                Add
+                <mat-icon>add_shopping_cart</mat-icon>
+            </a>
+            <a mat-raised-button color="primary" routerLink="">
+                <mat-icon>
+                    arrow_back_ios
+                </mat-icon>
+                Home
+            </a>
+        </mat-card-actions>
+    </mat-card>
+</section>

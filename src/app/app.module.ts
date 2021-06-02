@@ -23,6 +23,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenStorageService } from './auth/token-storage.service';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
+import { ProductDetailsComponent } from './product/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { AuthInterceptorService } from './auth/auth-interceptor.service';
     PasswordComponent,
     ConfirmationDialogComponent,
     PageNotFoundComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,
