@@ -13,15 +13,15 @@
             <p>Subcategory: {{ product.subcategory.name }}</p>
         </mat-card-content>
         <mat-card-actions fxLayoutAlign="space-evenly center">
-            <button mat-raised-button color="primary" (click)="addToCart(product.id)">
-                Add
-                <mat-icon>add_shopping_cart</mat-icon>
-            </button>
             <button mat-raised-button color="primary" routerLink="">
                 <mat-icon>
                     arrow_back_ios
                 </mat-icon>
                 Home
+            </button>
+            <button mat-raised-button color="primary" (click)="addToCart(product.id)">
+                Add
+                <mat-icon>add_shopping_cart</mat-icon>
             </button>
         </mat-card-actions>
     </mat-card>
