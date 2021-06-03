@@ -20,7 +20,6 @@ export class ShoppingCartComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    console.log(this.shoppingCartService.shoppingCart.products);
   }
 
   buy(): void {

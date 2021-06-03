@@ -1,3 +1,4 @@
+import { OrdersComponent } from './orders/orders/orders.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -42,6 +43,7 @@ import { ProductService } from './product/product.service';
     PageNotFoundComponent,
     ProductDetailsComponent,
     ShoppingCartComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

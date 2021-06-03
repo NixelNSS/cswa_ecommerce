@@ -5,7 +5,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { ProfileComponent } from './auth/profile/profile.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { HomeComponent } from './home/home.component';
-import { OrdersComponent } from './orders/orders.component';
+import { OrdersComponent } from './orders/orders/orders.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart/shopping-cart.component';

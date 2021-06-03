@@ -1,0 +1,13 @@
+section {
+    height: 90vh;
+}
+mat-card {
+    width: 50%;
+    margin: auto;
+}
+mat-card-content {
+    width: 100%;
+}
+table {
+    width: 100%;
+}
