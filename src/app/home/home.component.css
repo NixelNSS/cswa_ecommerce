@@ -1,11 +1,24 @@
 section {
-    margin-top: 10vh;
+    margin-top: 5vh;
 }
-mat-card {
+mat-form-field, mat-slider {
+    width: 50%;
+}
+.product{
     width: 20%;
     margin: auto;
     min-height: 33vh;
 }
-mat-card-content {
-    width: 75%;
+.product-content {
+    width: 100%;
+    text-align: center;
+}
+#filters {
+    width: 66%;
+    margin: auto;
+    min-height: 20vh;
+    text-align: center;
+}
+#card-title {
+    margin-bottom: 5vh;
 }

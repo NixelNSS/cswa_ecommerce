@@ -8,6 +8,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
     imports: [
@@ -19,7 +21,9 @@ import { MatSelectModule } from '@angular/material/select';
         MatCardModule,
         MatDialogModule,
         MatTabsModule,
-        MatSelectModule
+        MatSelectModule,
+        MatTableModule,
+        MatSliderModule
     ],
     exports: [
         MatIconModule,
@@ -30,7 +34,9 @@ import { MatSelectModule } from '@angular/material/select';
         MatCardModule,
         MatDialogModule,
         MatTabsModule,
-        MatSelectModule
+        MatSelectModule,
+        MatTableModule,
+        MatSliderModule
     ]
 })
 export class MaterialModule {

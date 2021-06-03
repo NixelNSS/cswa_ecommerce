@@ -24,6 +24,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenStorageService } from './auth/token-storage.service';
 import { AuthInterceptorService } from './auth/auth-interceptor.service';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart/shopping-cart.component';
+import { ShoppingCartService } from './shopping-cart/shopping-cart.service';
+import { ProductService } from './product/product.service';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,7 @@ import { ProductDetailsComponent } from './product/product-details/product-detai
     ConfirmationDialogComponent,
     PageNotFoundComponent,
     ProductDetailsComponent,
+    ShoppingCartComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +64,8 @@ import { ProductDetailsComponent } from './product/product-details/product-detai
     UserService,
     AuthGuardService,
     TokenStorageService,
+    ProductService,
+    ShoppingCartService,
     { 
       provide: HTTP_INTERCEPTORS, 
       useClass: AuthInterceptorService, 

@@ -8,6 +8,9 @@ mat-card {
 mat-card-content {
     width: 100%;
 }
-button {
-    min-width: 8vw;
+table {
+    width: 100%;
+}
+#buy {
+    min-width: 10vw;
 }

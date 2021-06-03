@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
 import { Category } from '../category/category.model';
+import { ShoppingCartComponent } from '../shopping-cart/shopping-cart/shopping-cart.component';
+import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,11 @@ export class AuthService {
 
   currentUser: User = null;
 
-  constructor(private router: Router, private http: HttpClient, private tokenStorageService: TokenStorageService) { }
+  constructor(
+    private router: Router, 
+    private http: HttpClient, 
+    private tokenStorageService: TokenStorageService,
+    private shoppingCartService: ShoppingCartService) { }
 
   login(email: string, password: string): Observable<any> {
     const data = { "email": email, "password": password };
@@ -68,6 +74,7 @@ export class AuthService {
     };
     this.tokenStorageService.saveUser(user);
     this.currentUser = this.tokenStorageService.getUser();
+    this.shoppingCartService.getShoppingCartByUser();
   }
 
 }

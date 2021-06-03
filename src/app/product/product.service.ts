@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
@@ -16,6 +16,16 @@ export class ProductService {
 
   getById(id: number): Observable<any> {
     return this.http.get(environment.apiUrl + "product/" + id);
+  }
+
+  getBySearchCriteria(value: string): Observable<any> {
+    return this.http.get(environment.apiUrl + "product/criteria/" + value);
+  }
+
+  getAllByPrice(startPrice: string, endPrice: string): Observable<any> {
+    return this.http.get(environment.apiUrl + "product", {
+      params: new HttpParams().set('endPrice', endPrice)
+    });
   }
 
 }
