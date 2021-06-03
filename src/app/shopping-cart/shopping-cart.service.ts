@@ -27,8 +27,12 @@ export class ShoppingCartService {
     return this.http.post(environment.apiUrl + "shoppingCart/buy", {});
   }
 
-  getShoppingCartByUser(): void {
+  loadShoppingCartByUser(): void {
     this.http.get<ShoppingCart>(environment.apiUrl + "shoppingCart")
       .subscribe(response => this.shoppingCart = response);
+  }
+
+  getShoppingCartByUser(): Observable<any> {
+    return this.http.get(environment.apiUrl + "shoppingCart");
   }
 }

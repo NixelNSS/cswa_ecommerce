@@ -13,7 +13,7 @@ import { ConfirmationDialogComponent } from 'src/app/confirmation-dialog/confirm
 })
 export class ShoppingCartComponent implements OnInit {
 
-  shoppingCart: ShoppingCart = this.shoppingCartService.shoppingCart;
+  shoppingCart: ShoppingCart;
   displayedColumns: string[] = ["number", "name", "price", "remove"];
 
   constructor(
@@ -23,6 +23,9 @@ export class ShoppingCartComponent implements OnInit {
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.shoppingCartService.getShoppingCartByUser().subscribe(
+      response => this.shoppingCart = response
+    );
   }
 
   buy(): void {

@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
 import { Category } from '../category/category.model';
-import { ShoppingCartComponent } from '../shopping-cart/shopping-cart/shopping-cart.component';
 import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 
 @Injectable({
@@ -61,7 +60,6 @@ export class AuthService {
 
   updateCurrentUserAfterLogin(response: any): void {
     this.tokenStorageService.saveToken(response.token);
-    console.log(response);
     let user: User = {
       id: response.id,
       email: response.email,
@@ -74,7 +72,6 @@ export class AuthService {
     };
     this.tokenStorageService.saveUser(user);
     this.currentUser = this.tokenStorageService.getUser();
-    this.shoppingCartService.getShoppingCartByUser();
   }
 
 }
