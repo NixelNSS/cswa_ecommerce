@@ -19,7 +19,8 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.shoppingCartService.loadShoppingCartByUser();
+    if (this.authService.currentUser != null)
+      this.shoppingCartService.loadShoppingCartByUser();
   }
 
   logout(): void {

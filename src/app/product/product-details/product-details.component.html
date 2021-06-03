@@ -1,16 +1,16 @@
 <section fxLayoutAlign="center center" fxLayout="column">
     <mat-card>
         <mat-card-header fxLayoutAlign="center center">
-            <mat-card-title>{{ product.name }}</mat-card-title>
+            <mat-card-title>{{ product?.name }}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <img [src]="product.imageURL">
-            <p>Description: {{ product.description }}</p>
-            <p>Quantity: {{ product.quantity }}</p>
-            <p>Price: {{ product.price }}</p>
-            <p>Seller: {{ product.seller }}</p>
-            <p>Country of origin: {{ product.countryOfOrigin }}</p>
-            <p>Subcategory: {{ product.subcategory.name }}</p>
+            <img [src]="product?.imageURL">
+            <p>Description: {{ product?.description }}</p>
+            <p>Quantity: {{ product?.quantity }}</p>
+            <p>Price: {{ product?.price }}</p>
+            <p>Seller: {{ product?.seller }}</p>
+            <p>Country of origin: {{ product?.countryOfOrigin }}</p>
+            <p>Subcategory: {{ product?.subcategory.name }}</p>
         </mat-card-content>
         <mat-card-actions fxLayoutAlign="space-evenly center">
             <button mat-raised-button color="primary" routerLink="">

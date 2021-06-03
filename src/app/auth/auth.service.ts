@@ -18,8 +18,7 @@ export class AuthService {
   constructor(
     private router: Router, 
     private http: HttpClient, 
-    private tokenStorageService: TokenStorageService,
-    private shoppingCartService: ShoppingCartService) { }
+    private tokenStorageService: TokenStorageService) { }
 
   login(email: string, password: string): Observable<any> {
     const data = { "email": email, "password": password };
@@ -58,7 +57,7 @@ export class AuthService {
     }
   }
 
-  updateCurrentUserAfterLogin(response: any): void {
+  updateCurrentUserAfterAuth(response: any): void {
     this.tokenStorageService.saveToken(response.token);
     let user: User = {
       id: response.id,

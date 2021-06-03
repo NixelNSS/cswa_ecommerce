@@ -23,7 +23,7 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      const id = + params['id']; // (+) converts string 'id' to a number
+      const id = + params['id'];
       this.productService.getById(id).subscribe(
         response => this.product = response,
         () => this.router.navigate(['/error404']));

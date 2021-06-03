@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
         form.value.firstName, form.value.lastName, form.value.phone,
         form.value.address, this.categories.value).subscribe(
           response => {
-            this.authService.currentUser = response;
+            this.authService.updateCurrentUserAfterAuth(response);
             this.toastService.success("Registration successful");
             this.router.navigate(['']);
           },

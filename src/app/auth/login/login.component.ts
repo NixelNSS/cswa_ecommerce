@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     if (form.valid) {
       this.authService.login(form.value.email, form.value.password).subscribe(
         response => {
-          this.authService.updateCurrentUserAfterLogin(response);
+          this.authService.updateCurrentUserAfterAuth(response);
           this.toastService.success("Login successful");
           this.router.navigate(['']);
         },

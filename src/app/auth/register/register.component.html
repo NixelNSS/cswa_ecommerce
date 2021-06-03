@@ -45,15 +45,17 @@
 
                 <mat-form-field hintLabel="Please, enter minimum 8 characters...">
                     <input matInput ngModel #password="ngModel" type="password" placeholder="Password..."
-                        name="password" required minLength="8">
+                        name="password" required minlength="8">
                     <mat-hint align="end">{{ password.value?.length }} / 8</mat-hint>
                     <mat-error *ngIf="password.hasError('required')">Field should not be empty!</mat-error>
+                    <mat-error *ngIf="confirmPassword.hasError('minlength')">Field must contain at least 8 characters!</mat-error>
                 </mat-form-field>
 
                 <mat-form-field hintLabel="Please, confirm your password...">
                     <input matInput ngModel #confirmPassword="ngModel" type="password" placeholder="Password..."
-                        name="confirmPassword" required minLength="8">
+                        name="confirmPassword" required minlength="8">
                     <mat-error *ngIf="confirmPassword.hasError('required')">Field should not be empty!</mat-error>
+                    <mat-error *ngIf="confirmPassword.hasError('minlength')">Field must contain at least 8 characters!</mat-error>
                     <mat-error *ngIf="">Password does not match!</mat-error>
                 </mat-form-field>
                 <mat-error id="custom-error">{{ error }}</mat-error>
