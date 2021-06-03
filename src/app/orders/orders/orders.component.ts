@@ -1,9 +1,13 @@
 import { ToastrService } from 'ngx-toastr';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Order } from '../order.model';
 import { OrdersService } from '../orders.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from 'src/app/confirmation-dialog/confirmation-dialog.component';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+
 
 @Component({
   selector: 'app-orders',
@@ -12,8 +16,11 @@ import { ConfirmationDialogComponent } from 'src/app/confirmation-dialog/confirm
 })
 export class OrdersComponent implements OnInit {
 
-  orders: Order[];
+  orders: MatTableDataSource<Order>; 
   displayedColumns: string[] = ["number", "amount", "count", "remove"];
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private orderService: OrdersService,
@@ -21,7 +28,11 @@ export class OrdersComponent implements OnInit {
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.orderService.getAll().subscribe(response => this.orders = response);
+    this.orderService.getAll().subscribe(response => {
+      this.orders = new MatTableDataSource<Order>(response);
+      this.orders.paginator = this.paginator;
+      this.orders.sort = this.sort;
+    });
   }
 
   deleteById(id: number): void {
