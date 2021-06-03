@@ -38,9 +38,10 @@
                 </mat-form-field>
 
                 <mat-form-field hintLabel="Please, enter your favorite categories...">
-                    <mat-select [formControl]="categories" multiple placeholder="Favorite categories...">
+                    <mat-select [formControl]="categories" multiple placeholder="Favorite categories..." required>
                         <mat-option *ngFor="let category of categoryList" [value]="category">{{ category.name }}</mat-option>
                     </mat-select>
+                    <mat-error *ngIf="categories.invalid">Field should not be empty!</mat-error>
                 </mat-form-field>
 
                 <mat-form-field hintLabel="Please, enter minimum 8 characters...">
@@ -61,7 +62,7 @@
                 <mat-error id="custom-error">{{ error }}</mat-error>
             </mat-card-content>
             <mat-card-actions>
-                <button [disabled]="!form.valid" type="submit" mat-raised-button color="primary">Register</button>
+                <button [disabled]="form.invalid || categories.invalid" type="submit" mat-raised-button color="primary">Register</button>
             </mat-card-actions>
         </form>
         <a routerLink="/login">Already have an account? Click here to login!</a>
