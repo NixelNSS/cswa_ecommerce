@@ -1,5 +1,9 @@
+img {
+    width: 128px;
+    height: 128px;
+}
 #grid {
-    width: 100%;
+    width: 90%;
     padding-bottom: 0vh !important;
 }
 section {
@@ -20,6 +24,7 @@ mat-form-field, mat-slider {
 #filters {
     width: 66%;
     margin: auto;
+    margin-bottom: 3vh;
     min-height: 20vh;
     text-align: center;
 }
