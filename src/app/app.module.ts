@@ -28,6 +28,7 @@ import { ProductDetailsComponent } from './product/product-details/product-detai
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart/shopping-cart.component';
 import { ShoppingCartService } from './shopping-cart/shopping-cart.service';
 import { ProductService } from './product/product.service';
+import { BarRatingModule } from "ngx-bar-rating";
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { ProductService } from './product/product.service';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BarRatingModule,
     ToastrModule.forRoot(
       {  
         positionClass: 'toast-bottom-right',  

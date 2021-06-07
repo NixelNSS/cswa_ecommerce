@@ -21,13 +21,23 @@ mat-form-field, mat-slider {
     width: 100%;
     text-align: center;
 }
-#filters {
+.filters {
     width: 66%;
     margin: auto;
     margin-bottom: 3vh;
+    margin-top: 3vh;
     min-height: 20vh;
     text-align: center;
 }
 #card-title {
     margin-bottom: 5vh;
+}
+mat-sidenav {
+    margin: 1vw;
+    border-radius: 10px;
+    text-align: center;
+    width: 33%;
+}
+mat-sidenav-container {
+    height: 80vh;
 }

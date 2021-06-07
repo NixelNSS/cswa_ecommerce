@@ -13,6 +13,9 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
 
 
 @NgModule({
@@ -30,7 +33,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
         MatSliderModule,
         MatPaginatorModule,
         MatSortModule,
-        MatGridListModule
+        MatGridListModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatListModule
     ],
     exports: [
         MatIconModule,
@@ -46,7 +52,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
         MatSliderModule,
         MatPaginatorModule,
         MatSortModule,
-        MatGridListModule
+        MatGridListModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatListModule
     ]
 })
 export class MaterialModule {

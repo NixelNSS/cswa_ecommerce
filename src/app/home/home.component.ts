@@ -1,6 +1,9 @@
 import { Component, OnInit, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Category } from '../category/category.model';
+import { CategoryService } from '../category/category.service';
 import { Product } from '../product/product.model';
 import { ProductService } from '../product/product.service';
 import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
@@ -15,16 +18,25 @@ export class HomeComponent implements OnInit {
   products: Product[];
   searchValue: string = "";
   sliderValue: number = 0;
+  categories = new FormControl();
+  categoryList: Category[];
+  rating: number;
+
+  change() {
+    
+  }
 
   constructor(
     private productService: ProductService, 
     private router: Router,
     private shoppingCartService: ShoppingCartService,
-    private toastService: ToastrService) {}
+    private toastService: ToastrService,
+    private categoryService: CategoryService) {}
 
   ngOnInit(): void {
     this.productService.getAll().subscribe(response => this.products = response);
     this.shoppingCartService.getShoppingCartByUser();
+    this.categoryService.getAll().subscribe(response => this.categoryList = response);
   }
 
   loadDetails(productId: number) {

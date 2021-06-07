@@ -1,40 +1,89 @@
-<section fxLayoutAlign="center center" fxLayout="column">
-    <mat-card id="filters">
-        <mat-card-header fxLayoutAlign="center center">
-            <mat-card-title id="card-title">
-                <mat-label class="primary-color">Filters (by price, by name and description)</mat-label>
-            </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-            <mat-label>Maximum price: </mat-label><br />
-            <mat-slider color="primary" thumbLabel min="0" max="10000" [(ngModel)]="sliderValue" #slider (change)="getByPrice(slider.value)">Max price:</mat-slider>
-            <hr />
-            <mat-form-field>
-                <mat-label>Search for products:</mat-label>
-                <input matInput [(ngModel)]="searchValue" placeholder="Ex. HDD" (keyup)="search($event.target.value)">
-            </mat-form-field>
-        </mat-card-content>
-    </mat-card>
+<section>
+    <mat-toolbar>
+        <button mat-raised-button color="primary" (click)="sidenav.toggle()">Filter</button>
+    </mat-toolbar>
 
-    <mat-grid-list cols="3" rowHeight="1:1.2" gutterSize="10vh" id="grid">
-        <mat-grid-tile *ngFor="let product of products">
-            <mat-card fxLayout="column">
-                <mat-card-header fxLayoutAlign="center center">
-                    <mat-card-title>{{ product.name }}
-                        <hr />
-                    </mat-card-title>
-                </mat-card-header>
-                <mat-card-content class="product-content">
-                    <img [src]="product.imageURL">
-                    <p>Description: {{ product.description | slice:0:200 }}...</p>
-                    <hr />
-                    <p>Price: {{ product.price }}EUR</p>
-                </mat-card-content>
-                <mat-card-action fxLayoutAlign="space-evenly center">
-                    <a mat-raised-button color="primary" (click)="loadDetails(product.id)">Details</a>
-                    <a mat-raised-button color="primary" (click)="addToCart(product.id)">Add to cart</a>
-                </mat-card-action>
-            </mat-card>
-        </mat-grid-tile>
-    </mat-grid-list>
+    <mat-sidenav-container>
+        <mat-sidenav mode="over" #sidenav>
+           <mat-card class="filters">
+            <mat-card-header fxLayoutAlign="center center">
+                <mat-card-title id="card-title">
+                    <mat-label class="primary-color">Search</mat-label>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-form-field hintLabel="Search by title or description...">
+                    <mat-label>Search for products:</mat-label>
+                    <input matInput [(ngModel)]="searchValue" placeholder="Ex. HDD" (keyup)="search($event.target.value)">
+                </mat-form-field>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="filters">
+            <mat-card-header fxLayoutAlign="center center">
+                <mat-card-title id="card-title">
+                    <mat-label class="primary-color">Filters</mat-label>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-form-field>
+                    <mat-select [formControl]="categories" multiple placeholder="Select categories...">
+                        <mat-option *ngFor="let category of categoryList" [value]="category">{{ category.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <hr />
+                <mat-form-field>
+                    <mat-select [formControl]="categories" multiple placeholder="Select subcategories...">
+                        <mat-option *ngFor="let category of categoryList" [value]="category">{{ category.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <hr />
+                <mat-form-field>
+                    <mat-select [formControl]="categories" multiple placeholder="Select countries...">
+                        <mat-option *ngFor="let category of categoryList" [value]="category">{{ category.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <hr />
+                <div fxLayoutAlign="center center" fxLayout="column">
+                    <mat-label>Maximum price: </mat-label>
+                    <mat-slider color="primary" thumbLabel min="0" max="10000" [(ngModel)]="sliderValue" #slider
+                        (change)="getByPrice(slider.value)">Max price:
+                    </mat-slider>
+                </div>
+                <hr />
+                <div fxLayoutAlign="center center" fxLayout="column">
+                    <mat-label>Minimum rating: </mat-label>
+                    <bar-rating matInput name="rating" [(ngModel)]="rating" [max]="5" [theme]="'default'" (rateChange)="change()"></bar-rating>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+                <section class="content "fxLayoutAlign="center center" fxLayout="column">
+                
+                    <mat-grid-list cols="3" rowHeight="1:1.2" gutterSize="10vh" id="grid">
+                        <mat-grid-tile *ngFor="let product of products">
+                            <mat-card fxLayout="column">
+                                <mat-card-header fxLayoutAlign="center center">
+                                    <mat-card-title>{{ product.name }}
+                                        <hr />
+                                    </mat-card-title>
+                                </mat-card-header>
+                                <mat-card-content class="product-content">
+                                    <img [src]="product.imageURL">
+                                    <p>Description: {{ product.description | slice:0:200 }}...</p>
+                                    <hr />
+                                    <p>Price: {{ product.price }}EUR</p>
+                                </mat-card-content>
+                                <mat-card-action fxLayoutAlign="space-evenly center">
+                                    <a mat-raised-button color="primary" (click)="loadDetails(product.id)">Details</a>
+                                    <a mat-raised-button color="primary" (click)="addToCart(product.id)">Add to cart</a>
+                                </mat-card-action>
+                            </mat-card>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                </section>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
 </section>
