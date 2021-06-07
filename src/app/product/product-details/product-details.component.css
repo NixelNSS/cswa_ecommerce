@@ -1,5 +1,8 @@
-section {
+#container {
     height: 90vh;
+}
+#right {
+    margin-left: 2.5vw;
 }
 mat-card {
     width: 50%;
@@ -10,4 +13,25 @@ mat-card-content {
 }
 button {
     min-width: 8vw;
+}
+img {
+    width: 256px;
+    height: 256px;
+}
+.label {
+    text-decoration: underline;
+    margin: auto;
+}
+#price {
+    margin-top: 2.5vh;
+}
+p {
+    margin-top: 1vh;
+}
+.column {
+    width: 50%;
+    height: 10vh;
+}
+#row {
+    width: 100%;
 }

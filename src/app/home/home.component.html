@@ -53,7 +53,7 @@
                 <hr />
                 <div fxLayoutAlign="center center" fxLayout="column">
                     <mat-label>Minimum rating: </mat-label>
-                    <bar-rating matInput name="rating" [(ngModel)]="rating" [max]="5" [theme]="'default'" (rateChange)="change()"></bar-rating>
+                    <bar-rating [(ngModel)]="rating" [max]="5" [theme]="'default'" (rateChange)="change()"></bar-rating>
                 </div>
             </mat-card-content>
         </mat-card>

@@ -1,27 +1,54 @@
-<section fxLayoutAlign="center center" fxLayout="column">
-    <mat-card>
-        <mat-card-header fxLayoutAlign="center center">
-            <mat-card-title>{{ product?.name }}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
+<section id="container" fxLayoutAlign="center center" fxLayout="column">
+    <mat-card fxLayoutAlign="center center" fxLayout="row">
+        <section>
             <img [src]="product?.imageURL">
-            <p>Description: {{ product?.description }}</p>
-            <p>Price: {{ product?.price }}</p>
-            <p>Seller: {{ product?.seller }}</p>
-            <p>Country of origin: {{ product?.countryOfOrigin }}</p>
-            <p>Subcategory: {{ product?.subcategory.name }}</p>
-        </mat-card-content>
-        <mat-card-actions fxLayoutAlign="space-evenly center">
-            <button mat-raised-button color="primary" routerLink="">
-                <mat-icon>
-                    arrow_back_ios
-                </mat-icon>
-                Home
-            </button>
-            <button mat-raised-button color="primary" (click)="addToCart(product.id)">
-                Add
-                <mat-icon>add_shopping_cart</mat-icon>
-            </button>
-        </mat-card-actions>
+        </section>
+        <section id="right">
+            <mat-card-header fxLayoutAlign="center center">
+                <mat-card-title>
+                    <h1>{{ product?.name }}</h1>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content fxLayoutAlign="center start" fxLayout="column">
+                <section id="row" fxLayout="row">
+                    <div class="column">
+                        <h3 class="label">PRICE</h3>
+                        <h3 id="price" class="primary-color">${{ product?.price }}</h3>
+                    </div>
+                    <div class="column">
+                        <h3 class="label">RATING</h3>
+                        <bar-rating [max]="5" [theme]="'default'"></bar-rating>
+                    </div>
+                </section>
+                <div>
+                    <h4 class="label">DESCRIPTION</h4>
+                    <p>{{ product?.description }}</p>
+                </div>
+                <div>
+                    <h4 class="label">SELLER</h4>
+                    <p>{{ product?.seller }}</p>
+                </div>
+                <div>
+                    <h4 class="label">COUNTRY OF ORIGIN</h4>
+                    <p>{{ product?.countryOfOrigin }}</p>
+                </div>
+                <div>
+                    <h4 class="label">SUBCATEGORY</h4>
+                    <p>{{ product?.subcategory.name }}</p>
+                </div>
+            </mat-card-content>
+            <mat-card-actions fxLayoutAlign="space-evenly center">
+                <button mat-raised-button color="primary" routerLink="">
+                    <mat-icon>
+                        arrow_back_ios
+                    </mat-icon>
+                    Home
+                </button>
+                <button mat-raised-button color="primary" (click)="addToCart(product.id)">
+                    Add
+                    <mat-icon>add_shopping_cart</mat-icon>
+                </button>
+            </mat-card-actions>
+        </section>
     </mat-card>
 </section>
