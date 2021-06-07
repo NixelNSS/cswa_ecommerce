@@ -14,7 +14,7 @@ import { ConfirmationDialogComponent } from 'src/app/confirmation-dialog/confirm
 export class ShoppingCartComponent implements OnInit {
 
   shoppingCart: ShoppingCart;
-  displayedColumns: string[] = ["number", "name", "price", "remove"];
+  displayedColumns: string[] = ["number", "name", "price", "increase", "quantity", "decrease", "remove"];
 
   constructor(
     private shoppingCartService: ShoppingCartService, 
@@ -65,6 +65,17 @@ export class ShoppingCartComponent implements OnInit {
         );
       }
     });
+  }
+
+
+  increaseProduct(productId: number): void {
+    //TODO: implement increase
+    this.toastService.success("Number of items increased.");
+  }
+
+  decreaseProduct(productId: number): void {
+    //TODO: implement decrease
+    this.toastService.success("Number of items decreased.");
   }
 
 }
