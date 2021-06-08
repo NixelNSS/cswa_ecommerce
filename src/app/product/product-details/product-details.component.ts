@@ -12,6 +12,14 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ProductDetailsComponent implements OnInit {
 
+  displayedColumns: string[] = ["number", "name", "rating"];
+  reviews = [
+    {name: "Zoran Jokic", rating: 3},
+    {name: "Milos Peric", rating: 4},
+    {name: "Nikola Nikolic", rating: 2},
+    {name: "Uros Urosevic", rating: 5}
+  ];
+
   product: Product;
 
   constructor(

@@ -36,6 +36,43 @@
                     <h4 class="label">SUBCATEGORY</h4>
                     <p>{{ product?.subcategory.name }}</p>
                 </div>
+                <div id="reviews">
+                    <mat-accordion>
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Reviews
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    Click to show the reviews
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <div class="product-container">
+                                <table mat-table [dataSource]="reviews" matSort>
+                                    <ng-container matColumnDef="number">
+                                        <th mat-header-cell *matHeaderCellDef> No. </th>
+                                        <td mat-cell *matCellDef="let element; let i = index"> {{i + 1}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="name">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="rating">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Rating </th>
+                                        <td mat-cell *matCellDef="let element">
+                                            <bar-rating [max]="5" [theme]="'default'" [rate]="element.rating"></bar-rating>
+                                        </td>
+                                    </ng-container>
+
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                </table>
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
             </mat-card-content>
             <mat-card-actions fxLayoutAlign="space-evenly center">
                 <button mat-raised-button color="primary" routerLink="">
