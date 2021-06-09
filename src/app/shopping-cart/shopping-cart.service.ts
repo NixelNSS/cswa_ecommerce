@@ -14,13 +14,15 @@ export class ShoppingCartService {
   constructor(private http: HttpClient) {}
 
   addProduct(productId: number): Observable<any> {
-    const data = { "id": productId };
-    return this.http.post(environment.apiUrl + "shoppingCart/product/add", data);
+    return this.http.post(environment.apiUrl + "shoppingCart/product/add", {"id": productId});
   }
   
   removeProduct(productId: number): Observable<any> {
-    const data = { "id": productId };
-    return this.http.post(environment.apiUrl + "shoppingCart/product/remove", data);
+    return this.http.post(environment.apiUrl + "shoppingCart/product/remove", {"id": productId});
+  }
+
+  decreaseProduct(productId: number): Observable<any> {
+    return this.http.post(environment.apiUrl + "shoppingCart/product/decrease", {"id": productId});
   }
   
   buy(): Observable<any>  {

@@ -69,13 +69,27 @@ export class ShoppingCartComponent implements OnInit {
 
 
   increaseProduct(productId: number): void {
-    //TODO: implement increase
-    this.toastService.success("Number of items increased.");
+    this.shoppingCartService.addProduct(productId).subscribe(
+      response => {
+        this.shoppingCartService.shoppingCart = response;
+        this.shoppingCart = this.shoppingCartService.shoppingCart;
+        this.toastService.success("Number of items increased.");
+      }
+    );
   }
 
-  decreaseProduct(productId: number): void {
-    //TODO: implement decrease
-    this.toastService.success("Number of items decreased.");
+  decreaseProduct(productId: number, quantity: number): void {
+    if (quantity == 1) {
+      this.removeProduct(productId);
+      return;
+    }
+    this.shoppingCartService.decreaseProduct(productId).subscribe(
+      response => {
+        this.shoppingCartService.shoppingCart = response;
+        this.shoppingCart = this.shoppingCartService.shoppingCart;
+        this.toastService.success("Number of items decreased.");
+      }
+    );
   }
 
 }
