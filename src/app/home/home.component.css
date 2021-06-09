@@ -44,3 +44,9 @@ mat-sidenav {
 mat-sidenav-container {
     height: 80vh;
 }
+#apply-container {
+    margin-top: 4vh;
+}
+#apply-button {
+    width: 10vw;
+}

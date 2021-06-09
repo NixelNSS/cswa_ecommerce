@@ -1,4 +1,5 @@
 import { Subcategory } from "../category/subcategory.model";
+import { Country } from "./country.model";
 
 export interface Product {
     id: number;
@@ -7,6 +8,6 @@ export interface Product {
     imageURL: string;
     price: number;
     seller: string;
-    countryOfOrigin: string;
+    countryOfOrigin: Country;
     subcategory: Subcategory;
 }
