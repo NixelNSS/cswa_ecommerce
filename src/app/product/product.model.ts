@@ -1,5 +1,6 @@
 import { Subcategory } from "../category/subcategory.model";
 import { Country } from "../shared/country/country.model";
+import { Review } from "../shared/review/review.model";
 
 export interface Product {
     id: number;
@@ -10,4 +11,6 @@ export interface Product {
     seller: string;
     countryOfOrigin: Country;
     subcategory: Subcategory;
+    reviews: Review[];
+    averageReviewValue: number;
 }
