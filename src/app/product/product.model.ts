@@ -1,5 +1,5 @@
 import { Subcategory } from "../category/subcategory.model";
-import { Country } from "./country.model";
+import { Country } from "../shared/country/country.model";
 
 export interface Product {
     id: number;

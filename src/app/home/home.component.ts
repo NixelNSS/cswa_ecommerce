@@ -1,7 +1,5 @@
 import { Subcategory } from './../category/subcategory.model';
-import { CountryService } from './../product/country.service';
-import { Country } from './../product/country.model';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -11,6 +9,8 @@ import { Product } from '../product/product.model';
 import { ProductService } from '../product/product.service';
 import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 import { SubcategoryService } from '../category/subcategory.service';
+import { Country } from '../shared/country/country.model';
+import { CountryService } from '../shared/country/country.service';
 
 @Component({
   selector: 'app-home',

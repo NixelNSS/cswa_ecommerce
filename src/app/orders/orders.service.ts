@@ -19,4 +19,12 @@ export class OrdersService {
     return this.http.get(environment.apiUrl + "order");
   }
 
+  markAsReceived(orderId: number): Observable<any> {
+    return this.http.put(environment.apiUrl + "order/receive/" + orderId, {});
+  }
+
+  markAsCanceled(orderId: number): Observable<any> {
+    return this.http.put(environment.apiUrl + "order/cancel/" + orderId, {});
+  }
+
 }
