@@ -67,14 +67,18 @@ export class HomeComponent implements OnInit {
   }
 
   search(value: string): void {
-    console.log(value);
     if (value == "")
       this.productService.getAll().subscribe(response => this.products = response);
     else
       this.productService.getBySearchCriteria(value).subscribe(response => this.products = response);
+    this.categories = new FormControl();
+    this.subcategories = new FormControl();
+    this.countries = new FormControl();
+    this.slider = new FormControl();
+    this.rating = new FormControl();
   }
 
-  onSubmit(form: NgForm): void {
+  onSubmit(): void {
     if (this.categories.value != null) {
       this.productService.getAllByCategoryAndFilters(
         this.categories.value,
@@ -90,6 +94,7 @@ export class HomeComponent implements OnInit {
       this.slider.value,
       this.rating.value
     ).subscribe(response => this.products = response);
+    this.searchValue = "";
   }
 
   categorySelected(): void {
