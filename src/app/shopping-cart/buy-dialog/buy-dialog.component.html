@@ -1,0 +1,19 @@
+<section>
+    <h1 mat-dialog-title>Action confirmation</h1>
+    <mat-dialog-content>
+        <div>
+            <p>Are you sure you want to proceed with the payment? (Yes / No)</p>
+        </div>
+        <hr />
+        <div>
+            <p>Add custom address if you don't want to use your default.</p>
+            <mat-form-field appearance="outline">
+                <input matInput type="text" placeholder="Address..." #address/>
+            </mat-form-field>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button color="warn" mat-raised-button [mat-dialog-close]="address.value">Yes</button>
+        <button mat-stroked-button [mat-dialog-close]="false">No</button>
+    </mat-dialog-actions>
+</section>

@@ -1,3 +1,7 @@
+import { CountryService } from './shared/country/country.service';
+import { CategoryService } from 'src/app/category/category.service';
+import { ReviewService } from './shared/review/review.service';
+import { OrdersService } from './orders/orders.service';
 import { OrdersComponent } from './orders/orders/orders.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -29,6 +33,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart/shopping-ca
 import { ShoppingCartService } from './shopping-cart/shopping-cart.service';
 import { ProductService } from './product/product.service';
 import { BarRatingModule } from "ngx-bar-rating";
+import { BuyDialogComponent } from './shopping-cart/buy-dialog/buy-dialog.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +49,8 @@ import { BarRatingModule } from "ngx-bar-rating";
     PageNotFoundComponent,
     ProductDetailsComponent,
     ShoppingCartComponent,
-    OrdersComponent
+    OrdersComponent,
+    BuyDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +76,10 @@ import { BarRatingModule } from "ngx-bar-rating";
     TokenStorageService,
     ProductService,
     ShoppingCartService,
+    OrdersService,
+    ReviewService,
+    CategoryService,
+    CountryService,
     { 
       provide: HTTP_INTERCEPTORS, 
       useClass: AuthInterceptorService, 

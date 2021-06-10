@@ -1,6 +1,6 @@
 import { ShoppingCart } from './shopping-cart.model';
 import { environment } from './../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -25,7 +25,14 @@ export class ShoppingCartService {
     return this.http.post(environment.apiUrl + "shoppingCart/product/decrease", {"id": productId});
   }
   
-  buy(): Observable<any>  {
+  buy(address: string): Observable<any>  {
+    if (address != "") {
+      console.log("A");
+      return this.http.post(environment.apiUrl + "shoppingCart/buy", {}, {
+        params: new HttpParams().set('address', address)
+      });
+    }
+    console.log("B");
     return this.http.post(environment.apiUrl + "shoppingCart/buy", {});
   }
 

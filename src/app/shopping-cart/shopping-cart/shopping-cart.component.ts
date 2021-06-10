@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from 'src/app/confirmation-dialog/confirmation-dialog.component';
+import { BuyDialogComponent } from '../buy-dialog/buy-dialog.component';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -29,14 +30,14 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   buy(): void {
-    const dialog = this.dialog.open(ConfirmationDialogComponent, {
+    const dialog = this.dialog.open(BuyDialogComponent, {
       data: {
         content: "proceed with the payment"
       }
     });
     dialog.afterClosed().subscribe(result => {
-      if (result) {
-        this.shoppingCartService.buy().subscribe(
+      if (result || result == "") {
+        this.shoppingCartService.buy(result).subscribe(
           response => {
             this.shoppingCartService.shoppingCart = response;
             this.shoppingCart = this.shoppingCartService.shoppingCart;
