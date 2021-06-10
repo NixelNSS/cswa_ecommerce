@@ -81,7 +81,7 @@
                     </mat-icon>
                     Home
                 </button>
-                <button mat-raised-button color="primary" (click)="addToCart(product.id)">
+                <button *ngIf="this.currentUser" mat-raised-button color="primary" (click)="addToCart(product.id)">
                     Add
                     <mat-icon>add_shopping_cart</mat-icon>
                 </button>

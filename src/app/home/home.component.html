@@ -111,7 +111,7 @@
                             </mat-card-content>
                             <mat-card-action fxLayoutAlign="space-evenly center">
                                 <a mat-raised-button color="primary" (click)="loadDetails(product.id)">Details</a>
-                                <a mat-raised-button color="primary" (click)="addToCart(product.id)">Add to cart</a>
+                                <a *ngIf="this.currentUser" mat-raised-button color="primary" (click)="addToCart(product.id)">Add to cart</a>
                             </mat-card-action>
                         </mat-card>
                     </mat-grid-tile>

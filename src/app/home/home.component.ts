@@ -1,3 +1,4 @@
+import { AuthService } from './../auth/auth.service';
 import { Subcategory } from './../category/subcategory.model';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
@@ -11,6 +12,7 @@ import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 import { SubcategoryService } from '../category/subcategory.service';
 import { Country } from '../shared/country/country.model';
 import { CountryService } from '../shared/country/country.service';
+import { User } from '../auth/user/user.model';
 
 @Component({
   selector: 'app-home',
@@ -31,6 +33,8 @@ export class HomeComponent implements OnInit {
   slider = new FormControl();
   rating = new FormControl();
 
+  currentUser: User = this.authService.currentUser;
+
   constructor(
     private productService: ProductService,
     private router: Router,
@@ -38,7 +42,8 @@ export class HomeComponent implements OnInit {
     private toastService: ToastrService,
     private categoryService: CategoryService,
     private subcategoryService: SubcategoryService,
-    private countryService: CountryService) { }
+    private countryService: CountryService,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.shoppingCartService.getShoppingCartByUser();
