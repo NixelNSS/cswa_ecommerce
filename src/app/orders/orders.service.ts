@@ -19,6 +19,10 @@ export class OrdersService {
     return this.http.get(environment.apiUrl + "order");
   }
 
+  getAllByCriteria(criteria: string): Observable<any> {
+    return this.http.get(environment.apiUrl + "order/" + criteria);
+  }
+
   markAsReceived(orderId: number): Observable<any> {
     return this.http.put(environment.apiUrl + "order/receive/" + orderId, {});
   }

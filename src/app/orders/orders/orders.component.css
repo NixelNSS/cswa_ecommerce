@@ -1,6 +1,9 @@
 section {
     height: 90vh;
 }
+mat-form-field {
+    width: 100%;
+}
 mat-card {
     width: 90%;
     margin: auto;

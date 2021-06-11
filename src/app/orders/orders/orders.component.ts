@@ -44,7 +44,6 @@ export class OrdersComponent implements OnInit {
       this.orders = new MatTableDataSource<Order>(response);
       this.orders.paginator = this.paginator;
       this.orders.sort = this.sort;
-      console.log(response);
     });
   }
 
@@ -136,6 +135,15 @@ export class OrdersComponent implements OnInit {
       }
     }
     return num;
+  }
+
+  search(value: string): void {
+    this.orderService.getAllByCriteria(value).subscribe(response => {
+      this.orders = new MatTableDataSource<Order>(response);
+      this.orders.paginator = this.paginator;
+      this.orders.sort = this.sort;
+      console.log(response);
+    });
   }
 
 }
