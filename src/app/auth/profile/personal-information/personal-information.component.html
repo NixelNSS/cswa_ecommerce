@@ -38,14 +38,15 @@
         </mat-form-field>
 
         <mat-form-field hintLabel="Please, enter your favorite categories...">
-          <mat-select [formControl]="categoriesForm" multiple placeholder="Favorite categories...">
+          <mat-select [formControl]="categoriesForm" multiple placeholder="Favorite categories..." required>
             <mat-option *ngFor="let category of categoryList" [value]="category">{{ category }}</mat-option>
           </mat-select>
+          <mat-error *ngIf="categoriesForm.invalid">Field should not be empty!</mat-error>
         </mat-form-field>
 
         <mat-card-actions>
           <button *ngIf="isNotEditable" mat-raised-button color="primary" (click)="changeEditState()">EDIT</button>
-          <button [disabled]="!form.valid" *ngIf="!isNotEditable" mat-raised-button color="primary"
+          <button [disabled]="!form.valid || categoriesForm.invalid" *ngIf="!isNotEditable" mat-raised-button color="primary"
             type="submit">SAVE</button>
         </mat-card-actions>
       </mat-card-content>
