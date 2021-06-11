@@ -35,7 +35,7 @@
                     <th mat-header-cell *matHeaderCellDef> Products </th>
                     <td mat-cell *matCellDef="let element">
                         <mat-accordion>
-                            <mat-expansion-panel>
+                            <mat-expansion-panel [expanded]="isOpen == element.id" (opened)="isOpen = element.id">
                                 <mat-expansion-panel-header>
                                     <mat-panel-title>
                                         Products
@@ -116,7 +116,7 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
-            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+            <mat-paginator [pageSizeOptions]="[3, 4, 5]" showFirstLastButtons></mat-paginator>
         </mat-card-content>
         <mat-card-actions fxLayoutAlign="space-evenly center">
             <button mat-raised-button color="primary" routerLink="">

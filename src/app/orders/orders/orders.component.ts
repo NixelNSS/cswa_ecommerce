@@ -32,6 +32,8 @@ export class OrdersComponent implements OnInit {
 
   ratings: number[];
 
+  isOpen: number;
+
   constructor(
     private orderService: OrdersService,
     private toastService: ToastrService,
@@ -40,6 +42,7 @@ export class OrdersComponent implements OnInit {
     private reviewService: ReviewService) { }
 
   ngOnInit(): void {
+    this.isOpen = -1;
     this.orderService.getAll().subscribe(response => {
       this.orders = new MatTableDataSource<Order>(response);
       this.orders.paginator = this.paginator;
