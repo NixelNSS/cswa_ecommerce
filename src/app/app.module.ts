@@ -33,6 +33,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart/shopping-ca
 import { ShoppingCartService } from './shopping-cart/shopping-cart.service';
 import { ProductService } from './product/product.service';
 import { BarRatingModule } from "ngx-bar-rating";
+import { NgxPaginationModule } from 'ngx-pagination';
 import { BuyDialogComponent } from './shopping-cart/buy-dialog/buy-dialog.component';
 
 @NgModule({
@@ -62,6 +63,7 @@ import { BuyDialogComponent } from './shopping-cart/buy-dialog/buy-dialog.compon
     ReactiveFormsModule,
     HttpClientModule,
     BarRatingModule,
+    NgxPaginationModule,
     ToastrModule.forRoot(
       {  
         positionClass: 'toast-bottom-right',  

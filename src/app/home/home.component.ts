@@ -21,7 +21,7 @@ import { User } from '../auth/user/user.model';
 })
 export class HomeComponent implements OnInit {
 
-  products: Product[];
+  products: Product[] = [];
   searchValue: string = "";
 
   categories = new FormControl();
@@ -34,6 +34,9 @@ export class HomeComponent implements OnInit {
   rating = new FormControl();
 
   currentUser: User = this.authService.currentUser;
+
+  page = 1;
+  totalItemsNumber= this.products.length;
 
   constructor(
     private productService: ProductService,
@@ -103,6 +106,10 @@ export class HomeComponent implements OnInit {
 
   subcategorySelected(): void {
     this.categories = new FormControl();
+  }
+
+  onTableDataChange(event: number): void {
+    this.page = event;
   }
 
 }

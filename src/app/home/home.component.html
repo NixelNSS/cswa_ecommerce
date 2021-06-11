@@ -88,15 +88,13 @@
                     </mat-tab>
                 </mat-tab-group>
             </section>
-
-
         </mat-sidenav>
 
         <mat-sidenav-content>
             <section class="content " fxLayoutAlign="center center" fxLayout="column">
-
+                <pagination-controls autoHide="true" (pageChange)="onTableDataChange($event)"></pagination-controls>
                 <mat-grid-list cols="3" rowHeight="1:1.2" gutterSize="10vh" id="grid">
-                    <mat-grid-tile *ngFor="let product of products">
+                    <mat-grid-tile *ngFor="let product of products | paginate: { itemsPerPage: 6, currentPage: page, totalItems: totalItemsNumber}">
                         <mat-card fxLayout="column">
                             <mat-card-header fxLayoutAlign="center center">
                                 <mat-card-title>{{ product.name }}
