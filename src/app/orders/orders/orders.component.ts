@@ -25,7 +25,7 @@ export class OrdersComponent implements OnInit {
   productDisplayedColumns: string[] = ["number", "name", "rating", "product-details"];
 
   orders: MatTableDataSource<Order>; 
-  displayedColumns: string[] = ["number", "datetime", "address", "amount", "products", "status", "received", "cancel", "remove"];
+  displayedColumns: string[] = ["number", "dateCreated", "address", "amount", "products", "state", "received", "cancel", "remove"];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

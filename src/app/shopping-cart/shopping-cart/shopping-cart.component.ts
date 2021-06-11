@@ -36,7 +36,7 @@ export class ShoppingCartComponent implements OnInit {
       }
     });
     dialog.afterClosed().subscribe(result => {
-      if (result || result == "") {
+      if (result != "no") {
         this.shoppingCartService.buy(result).subscribe(
           response => {
             this.shoppingCartService.shoppingCart = response;
