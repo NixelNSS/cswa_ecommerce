@@ -26,13 +26,10 @@ export class ShoppingCartService {
   }
   
   buy(address: string): Observable<any>  {
-    if (address != "") {
-      console.log("A");
+    if (address != "")
       return this.http.post(environment.apiUrl + "shoppingCart/buy", {}, {
         params: new HttpParams().set('address', address)
       });
-    }
-    console.log("B");
     return this.http.post(environment.apiUrl + "shoppingCart/buy", {});
   }
 

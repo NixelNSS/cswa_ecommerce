@@ -31,7 +31,7 @@ export class ProductDetailsComponent implements OnInit {
     this.route.params.subscribe(params => {
       const id = + params['id'];
       this.productService.getById(id).subscribe(
-        response => {this.product = response; console.log(response)},
+        response => this.product = response,
         () => this.router.navigate(['/error404']));
    });
   }

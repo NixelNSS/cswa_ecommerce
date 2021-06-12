@@ -62,7 +62,7 @@ export class OrdersComponent implements OnInit {
           this.orders = new MatTableDataSource<Order>(response);
           this.orders.paginator = this.paginator;
           this.orders.sort = this.sort;
-          this.toastService.success("Item removed.");
+          this.toastService.success("Order removed.");
         });
       }
     });
@@ -145,7 +145,6 @@ export class OrdersComponent implements OnInit {
       this.orders = new MatTableDataSource<Order>(response);
       this.orders.paginator = this.paginator;
       this.orders.sort = this.sort;
-      console.log(response);
     });
   }
 
