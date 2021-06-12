@@ -5,10 +5,7 @@ mat-card {
     width: 75%;
     margin: auto;
 }
-mat-card-content {
-    width: 100%;
-}
-table {
+mat-card-content, table {
     width: 100%;
 }
 #buy {

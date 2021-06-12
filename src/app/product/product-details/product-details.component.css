@@ -8,9 +8,6 @@ mat-card {
     width: 60%;
     margin: auto;
 }
-mat-card-content {
-    width: 100%;
-}
 button {
     min-width: 8vw;
 }
@@ -32,10 +29,7 @@ p {
     width: 50%;
     height: 10vh;
 }
-#row {
-    width: 100%;
-}
-mat-expansion-panel, table  {
+mat-card-content, #row, mat-expansion-panel, table  {
     width: 100%;
 }
 #reviews {

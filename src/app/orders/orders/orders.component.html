@@ -7,7 +7,7 @@
 
             <mat-form-field>
                 <mat-label>Search...</mat-label>
-                <input matInput (keyup)="search(input.value)" placeholder="Ex. Received" #input>
+                <input matInput (keyup)="search($event.target.value)" placeholder="Ex. Received">
               </mat-form-field>
 
             <table mat-table [dataSource]="orders" matSort>

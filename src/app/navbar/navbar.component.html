@@ -1,4 +1,4 @@
-<nav fxLayout="row" fxLayoutAlign="start center" *ngIf="true">
+<nav fxLayout="row" fxLayoutAlign="start center">
     <a *ngIf="this.authService.currentUser" id="cart" mat-raised-button color="primary" routerLink="shopping-cart">
         <mat-icon>shopping_cart</mat-icon>{{ getCount() }}
     </a>

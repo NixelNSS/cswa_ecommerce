@@ -1,25 +1,16 @@
 section {
     height: 90vh;
 }
-mat-form-field {
-    width: 100%;
-}
 mat-card {
     width: 90%;
     margin: auto;
 }
-mat-card-content {
-    width: 100%;
-}
-table {
+mat-form-field, mat-card-content, table, .product-container  {
     width: 100%;
 }
 mat-expansion-panel {
     width: 85%;
     margin: 1vh 1vw;
-}
-.product-container {
-    width: 100%;
 }
 .col {
     width: 15vw;

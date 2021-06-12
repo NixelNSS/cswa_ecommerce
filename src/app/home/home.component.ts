@@ -82,6 +82,7 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.searchValue = "";
     if (this.categories.value != null) {
       this.productService.getAllByCategoryAndFilters(
         this.categories.value,
@@ -97,7 +98,6 @@ export class HomeComponent implements OnInit {
       this.slider.value,
       this.rating.value
     ).subscribe(response => this.products = response);
-    this.searchValue = "";
   }
 
   categorySelected(): void {

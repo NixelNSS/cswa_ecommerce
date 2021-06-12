@@ -9,7 +9,7 @@ import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private authService: AuthService, private shoppingCartService: ShoppingCartService) {}
+  constructor(public authService: AuthService, private shoppingCartService: ShoppingCartService) {}
 
   getCount() {
     if (this.shoppingCartService.shoppingCart)

@@ -14,8 +14,9 @@
 
                 <mat-form-field hintLabel="Please enter your password...">
                     <input matInput ngModel #password="ngModel" type="password" placeholder="Password..."
-                        name="password" required minLength="8">
+                        name="password" required minlength="8">
                     <mat-error *ngIf="password.hasError('required')">Field should not be empty!</mat-error>
+                    <mat-error *ngIf="password.hasError('minlength')">Field must contain at least 8 characters!</mat-error>
                 </mat-form-field>
                 <mat-error id="custom-error">{{ error }}</mat-error>
             </mat-card-content>

@@ -75,6 +75,7 @@ import { BuyDialogComponent } from './shopping-cart/buy-dialog/buy-dialog.compon
     AuthService,
     UserService,
     AuthGuardService,
+    AuthInterceptorService,
     TokenStorageService,
     ProductService,
     ShoppingCartService,

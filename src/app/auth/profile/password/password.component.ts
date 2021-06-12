@@ -26,7 +26,6 @@ export class PasswordComponent implements OnInit {
 
   onSubmit(form: NgForm): void {
     if (form.valid && form.value.password === form.value.confirmPassword) {
-
       const dialog = this.dialog.open(ConfirmationDialogComponent, {
         data: {
           content: "change your password"

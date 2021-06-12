@@ -5,7 +5,7 @@
 
     <mat-sidenav-container>
         <mat-sidenav mode="over" #sidenav>
-            <section fxLayoutAlign="center center" width="100%">
+            <section fxLayoutAlign="center center">
                 <mat-tab-group color="primary" mat-stretch-tabs>
                     <mat-tab label="Search">
                         <mat-card class="filters">
@@ -39,8 +39,7 @@
                                                     <mat-select [formControl]="categories" multiple
                                                         placeholder="Select categories..." (selectionChange)="categorySelected()">
                                                         <mat-option *ngFor="let category of categoryList"
-                                                            [value]="category">{{
-                                                            category.name }}</mat-option>
+                                                            [value]="category">{{ category.name }}</mat-option>
                                                     </mat-select>
                                                 </mat-form-field>
                                             </mat-tab>
@@ -50,7 +49,7 @@
                                                         placeholder="Select subcategories..." (selectionChange)="subcategorySelected()">
                                                         <mat-option *ngFor="let subcategory of subcategoryList"
                                                             [value]="subcategory">
-                                                            {{subcategory.name }}</mat-option>
+                                                            {{ subcategory.name }}</mat-option>
                                                     </mat-select>
                                                 </mat-form-field>
                                             </mat-tab>
@@ -61,16 +60,14 @@
                                         <mat-select [formControl]="countries" multiple
                                             placeholder="Select countries...">
                                             <mat-option *ngFor="let country of countryList" [value]="country">
-                                                {{country.name }}
+                                                {{ country.name }}
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>
                                     <hr />
                                     <div fxLayoutAlign="center center" fxLayout="column">
-                                        <mat-label>Maximum price: </mat-label>
-                                        <mat-slider [formControl]="slider" color="primary" thumbLabel min="0" max="10000">
-                                            Max price:
-                                        </mat-slider>
+                                        <mat-label>Maximum price:</mat-label>
+                                        <mat-slider [formControl]="slider" color="primary" thumbLabel min="0" max="10000"></mat-slider>
                                     </div>
                                     <hr />
                                     <div fxLayoutAlign="center center" fxLayout="column">

@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
 import { Category } from '../category/category.model';
-import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 
 @Injectable({
   providedIn: 'root'

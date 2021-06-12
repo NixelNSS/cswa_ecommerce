@@ -24,9 +24,7 @@ export class ShoppingCartComponent implements OnInit {
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.shoppingCartService.getShoppingCartByUser().subscribe(
-      response => this.shoppingCart = response
-    );
+    this.shoppingCartService.getShoppingCartByUser().subscribe(response => this.shoppingCart = response);
   }
 
   buy(): void {
